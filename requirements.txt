@@ -1,0 +1,11 @@
+Flask	2.1.1
+flask_bootstrap
+dill	0.3.4
+numpy	1.22.3
+pandas	1.4.2
+sklearn	0.0
+sklearn.model_selection
+sklearn.metrics
+tabulate	0.8.9
+logging
+os

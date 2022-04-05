@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="page-header">
+        <h1 class="text-center">{{ title }}</h1>
+    </div>
+
+    <h2 class="text-center text-muted">Enter data for prediction:</h2>
+
+    <form action="" method="post">
+         <div class="row">
+              <div class="form-group col-xs-6">
+                  <label for="InputYear">Year</label>
+                  <input name="year" class="form-control" id="InputYear"  placeholder="InputYear">
+              </div>
+              <div class="form-group col-xs-6">
+                  <label for="InputSex">Sex</label>
+<!--                  <input name="sex" class="form-control" id="InputSex"  placeholder="Enter sex">-->
+                  <select name="sex" id="InputSex"  class="form-control" style="color: white; background: #34568B;" >
+                    {% for s in sex %}
+                            <option value="{{ s }}">{{ s }}</option>
+                    {% endfor %}
+                  </select>
+<!--                  <small id="SexHelp" class="form-text text-muted">Enter 0 for male or 1 for female</small>-->
+              </div>
+               <div class="form-group col-xs-6">
+                  <label for="InputAge">Age</label>
+                  <select name="age" id="InputAge"  class="form-control" style="color: white; background: #34568B;" >
+                    {% for age in age_cats %}
+                            <option value="{{ age }}">{{ age }}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+              <div class="form-group col-xs-6">
+                  <label for="InputPopulation">Population</label>
+                  <input name="population" class="form-control" id="InputPopulation" placeholder="Population">
+              </div>
+              <div class="form-group col-xs-6">
+                  <label for="InputGDP_for_year">Gross domestic product for year</label>
+                  <input name="gdp_for_year" class="form-control" id="InputGDP_for_year" placeholder="GDP_for_year">
+              </div>
+              <div class="form-group col-xs-6">
+                  <label for="InputGDP_per_capita">Gross domestic product by person</label>
+                  <input name="gdp_per_capita" class="form-control" id="InputGDP_per_capita" placeholder="GDP_per_capita">
+              </div>
+              <div class="form-group col-xs-6">
+                  <label for="InputGeneration">Generation</label>
+                  <select name="generation" id="InputGeneration"   class="form-control" style="color: white; background: #34568B;" >
+                    {% for generation in generations %}
+                            <option value="{{ generation }}">{{ generation }}</option>
+                    {% endfor %}
+                  </select>
+              </div>
+         </div>
+      <button type="button" class="btn btn-primary" id="process_input">Predict</button>
+    </form>
+    <br>
+    <div id="result_lable"></div>
+    <div id="processed_results">
+    </div>
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+
+        $('#process_input').bind('click', function() {
+
+            $.getJSON('/prediction', {
+                year: $('#InputYear').val(),
+                sex: $('#InputSex').val(),
+                age: $('#InputAge').val(),
+                population: $('#InputPopulation').val(),
+                gdp_for_year: $('#InputGDP_for_year').val(),
+                gdp_per_capita: $('#InputGDP_per_capita').val(),
+                generation: $('#InputGeneration').val(),
+            }).success(function(data) {
+                $('#processed_results').text(data.predictions);
+                $('#result_lable').text('Result of prediction: ');
+            })
+          return false;
+
+        });
+      });
+    </script>
+
+{% endblock %}

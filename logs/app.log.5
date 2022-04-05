@@ -1,0 +1,102 @@
+2022-04-03 10:48:33,475 ERROR: Exception on /prediction [GET] [in D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\app\routes.py", line 60, in predict
+    preds = model.predict(pd.DataFrame({"year": [year],
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\app\model\datapipeline.py", line 28, in predict
+    preds = pd.DataFrame(self.__pipeline.predict(X), columns=[self.target])
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\utils\metaestimators.py", line 113, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)  # noqa
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 469, in predict
+    Xt = transform.transform(Xt)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 1222, in transform
+    Xs = Parallel(n_jobs=self.n_jobs)(
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 1046, in __call__
+    while self.dispatch_one_batch(iterator):
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 861, in dispatch_one_batch
+    self._dispatch(tasks)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 779, in _dispatch
+    job = self._backend.apply_async(batch, callback=cb)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\_parallel_backends.py", line 208, in apply_async
+    result = ImmediateResult(func)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\_parallel_backends.py", line 572, in __init__
+    self.results = batch()
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 262, in __call__
+    return [func(*args, **kwargs)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 262, in <listcomp>
+    return [func(*args, **kwargs)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\utils\fixes.py", line 216, in __call__
+    return self.function(*args, **kwargs)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 876, in _transform_one
+    res = transformer.transform(X)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\utils\metaestimators.py", line 113, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)  # noqa
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 647, in transform
+    Xt = transform.transform(Xt)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\app\model\datapipeline.py", line 88, in transform
+    return X[self.columns]
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\pandas\core\frame.py", line 3511, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\pandas\core\indexes\base.py", line 5782, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\pandas\core\indexes\base.py", line 5842, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['sex_female'], dtype='object')] are in the [columns]"
+2022-04-03 10:51:39,318 ERROR: Exception on /prediction [GET] [in D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py:1455]
+Traceback (most recent call last):
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 2077, in wsgi_app
+    response = self.full_dispatch_request()
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 1525, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 1523, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\flask\app.py", line 1509, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\app\routes.py", line 60, in predict
+    preds = model.predict(pd.DataFrame({"year": [year],
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\app\model\datapipeline.py", line 28, in predict
+    preds = pd.DataFrame(self.__pipeline.predict(X), columns=[self.target])
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\utils\metaestimators.py", line 113, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)  # noqa
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 469, in predict
+    Xt = transform.transform(Xt)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 1222, in transform
+    Xs = Parallel(n_jobs=self.n_jobs)(
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 1046, in __call__
+    while self.dispatch_one_batch(iterator):
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 861, in dispatch_one_batch
+    self._dispatch(tasks)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 779, in _dispatch
+    job = self._backend.apply_async(batch, callback=cb)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\_parallel_backends.py", line 208, in apply_async
+    result = ImmediateResult(func)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\_parallel_backends.py", line 572, in __init__
+    self.results = batch()
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 262, in __call__
+    return [func(*args, **kwargs)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\joblib\parallel.py", line 262, in <listcomp>
+    return [func(*args, **kwargs)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\utils\fixes.py", line 216, in __call__
+    return self.function(*args, **kwargs)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 876, in _transform_one
+    res = transformer.transform(X)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\utils\metaestimators.py", line 113, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)  # noqa
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\sklearn\pipeline.py", line 647, in transform
+    Xt = transform.transform(Xt)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\app\model\datapipeline.py", line 88, in transform
+    return X[self.columns]
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\pandas\core\frame.py", line 3511, in __getitem__
+    indexer = self.columns._get_indexer_strict(key, "columns")[1]
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\pandas\core\indexes\base.py", line 5782, in _get_indexer_strict
+    self._raise_if_missing(keyarr, indexer, axis_name)
+  File "D:\DEV\PythonUdemy\PychermProjects\SuicidPrevention\venv\lib\site-packages\pandas\core\indexes\base.py", line 5842, in _raise_if_missing
+    raise KeyError(f"None of [{key}] are in the [{axis_name}]")
+KeyError: "None of [Index(['sex_female'], dtype='object')] are in the [columns]"
